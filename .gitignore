@@ -55,3 +55,8 @@ SETUP_PRIVATE_REPO.sh
 
 # Internal documentation (not for public repo)
 CLEANUP_REPORT.md
+DEPLOYMENT.md
+CATEGORIES.md
+
+# Internal scripts (agent automation)
+scripts/
