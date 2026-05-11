@@ -46,7 +46,7 @@ temperature=0.6, top_p=0.95, top_k=20,
 min_p=0.0, presence_penalty=0.0, repetition_penalty=1.0
 ```
 
-為了啟用 thinking，作者還必須選擇模型、進入配置、滾動到 Inference 選項卡的底部，並將 `{%- set enable_thinking = true %}` 添加到 Prompt Template 中。
+為了啟用 thinking，作者還必須選擇模型、進入配置、滾動到 Inference 選項卡的底部，並將 `&lt;%- set enable_thinking = true %&gt;` 添加到 Prompt Template 中。
 
 ## 整合到開發工具流程
 
