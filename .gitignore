@@ -47,3 +47,11 @@ CEO_MEMORY.md
 plan/
 reports/
 preview.html
+
+# Local deployment scripts
+FIX_GIT.bat
+FIX_GIT.sh
+SETUP_PRIVATE_REPO.sh
+
+# Internal documentation (not for public repo)
+CLEANUP_REPORT.md
