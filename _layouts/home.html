@@ -1,0 +1,189 @@
+---
+layout: default
+is_homepage: true
+---
+
+<!-- AI Intelligence Hub - Header Section -->
+<div class="intelligence-header">
+    <div class="header-container">
+        <div class="header-main">
+            <h1 class="site-title">
+                <span class="title-icon">🧠</span>
+                AI Intelligence Hub
+            </h1>
+            <p class="site-subtitle">專業 AI 情報站 | 深度分析 · 洞察觀點 · 前沿追蹤</p>
+        </div>
+        <div class="header-stats">
+            <div class="stat-item">
+                <span class="stat-number">{{ site.posts | size }}</span>
+                <span class="stat-label">文章</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">分類</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">每日更新</span>
+                <span class="stat-label">頻率</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Categories Navigation -->
+<section class="categories-nav">
+    <div class="container">
+        <h2 class="section-title"><span class="icon">📚</span> 知識分類</h2>
+        <div class="categories-grid">
+            <a href="/categories/llm" class="category-card">
+                <div class="category-icon">🤖</div>
+                <h3>大語言模型</h3>
+                <p class="category-desc">GPT、Claude、開源模型等</p>
+                <span class="category-count">最新</span>
+            </a>
+            <a href="/categories/generative-ai" class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3>生成式 AI</h3>
+                <p class="category-desc">圖像、影音、程式生成</p>
+                <span class="category-count">熱門</span>
+            </a>
+            <a href="/categories/deep-learning" class="category-card">
+                <div class="category-icon">🧠</div>
+                <h3>深度學習</h3>
+                <p class="category-desc">神經網絡、Transformer</p>
+                <span class="category-count">深度</span>
+            </a>
+            <a href="/categories/industry" class="category-card">
+                <div class="category-icon">💼</div>
+                <h3>產業動態</h3>
+                <p class="category-desc">市場、就業、融資消息</p>
+                <span class="category-count">新鮮</span>
+            </a>
+            <a href="/categories/applications" class="category-card">
+                <div class="category-icon">🔧</div>
+                <h3>AI 應用</h3>
+                <p class="category-desc">醫療、開發、生產力</p>
+                <span class="category-count">實用</span>
+            </a>
+            <a href="/categories/governance" class="category-card">
+                <div class="category-icon">⚖️</div>
+                <h3>責任與治理</h3>
+                <p class="category-desc">安全、監管、倫理</p>
+                <span class="category-count">重要</span>
+            </a>
+            <a href="/categories/hardware" class="category-card">
+                <div class="category-icon">💻</div>
+                <h3>硬體與基礎設施</h3>
+                <p class="category-desc">GPU、雲端、工具</p>
+                <span class="category-count">基礎</span>
+            </a>
+            <a href="/categories/insights" class="category-card">
+                <div class="category-icon">💡</div>
+                <h3>觀點與分析</h3>
+                <p class="category-desc">專業洞察、趨勢預測</p>
+                <span class="category-count">精選</span>
+            </a>
+            <a href="/categories/education" class="category-card">
+                <div class="category-icon">📖</div>
+                <h3>教育與學習</h3>
+                <p class="category-desc">教程、課程、社群</p>
+                <span class="category-count">學習</span>
+            </a>
+            <a href="/categories/community" class="category-card">
+                <div class="category-icon">🎯</div>
+                <h3>活動與社群</h3>
+                <p class="category-desc">研討會、競賽、開源</p>
+                <span class="category-count">社群</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Articles -->
+<section class="latest-articles">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title"><span class="icon">📰</span> 最新報導</h2>
+            <a href="/articles" class="view-all">查看全部 →</a>
+        </div>
+
+        <div class="articles-list">
+            {% for post in site.posts limit 6 %}
+            <article class="article-card {{ post.type }}">
+                <div class="article-type-badge">{{ post.type | default: '新聞' }}</div>
+                <div class="article-category">{{ post.category }}</div>
+                <h3 class="article-title">
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </h3>
+                <p class="article-excerpt">{{ post.excerpt }}</p>
+
+                {% if post.ai_insight %}
+                <div class="article-insight-preview">
+                    <span class="insight-badge">💭 AI 觀點</span>
+                    <p>{{ post.ai_insight | truncatewords: 20 }}</p>
+                </div>
+                {% endif %}
+
+                <div class="article-meta">
+                    <span class="article-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                    {% if post.tags %}
+                    <div class="article-tags">
+                        {% for tag in post.tags limit 3 %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Hot Topics -->
+<section class="hot-topics">
+    <div class="container">
+        <h2 class="section-title"><span class="icon">🔥</span> 熱門議題</h2>
+        <div class="topics-grid">
+            <a href="/tags/gpt" class="topic-tag">#GPT 系列</a>
+            <a href="/tags/claude" class="topic-tag">#Claude</a>
+            <a href="/tags/open-source" class="topic-tag">#開源模型</a>
+            <a href="/tags/ai-safety" class="topic-tag">#AI 安全</a>
+            <a href="/tags/ai-governance" class="topic-tag">#AI 治理</a>
+            <a href="/tags/multimodal" class="topic-tag">#多模態 AI</a>
+            <a href="/tags/agents" class="topic-tag">#AI Agents</a>
+            <a href="/tags/rag" class="topic-tag">#RAG</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Insights -->
+<section class="featured-insights">
+    <div class="container">
+        <h2 class="section-title"><span class="icon">💡</span> 精選洞察</h2>
+        <div class="insights-grid">
+            {% assign insights = site.posts | where: 'type', '深度分析' | slice: 0, 3 %}
+            {% for post in insights %}
+            <article class="insight-card">
+                <div class="insight-icon">📊</div>
+                <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                <p class="insight-summary">{{ post.excerpt }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Subscribe Section -->
+<section class="subscribe-section">
+    <div class="container">
+        <div class="subscribe-content">
+            <h2>訂閱 AI 情報</h2>
+            <p>第一時間掌握 AI 領域最新動態與深度分析</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="輸入您的電子郵件">
+                <button type="submit">訂閱</button>
+            </form>
+        </div>
+    </div>
+</section>

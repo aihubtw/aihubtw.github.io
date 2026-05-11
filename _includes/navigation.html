@@ -1,0 +1,47 @@
+<nav class="navigation" id="mainNavigation">
+    <div class="nav-container">
+        <a href="{{ '/' | relative_url }}" class="nav-logo">
+            <div class="nav-logo-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <span class="nav-logo-text">AI News Hub</span>
+        </a>
+        
+        <button class="nav-menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu" id="navMenu">
+            <li>
+                <a href="{{ '/' | relative_url }}" class="nav-link {% if page.is_homepage == true %}active{% endif %}">
+                    首頁
+                </a>
+            </li>
+            <li>
+                <a href="{{ '/news/' | relative_url }}" class="nav-link">
+                    新聞列表
+                </a>
+            </li>
+            <li>
+                <a href="{{ '/categories/' | relative_url }}" class="nav-link">
+                    分類
+                </a>
+            </li>
+            <li>
+                <a href="{{ '/tags/' | relative_url }}" class="nav-link">
+                    標籤
+                </a>
+            </li>
+            <li>
+                <a href="{{ '/about/' | relative_url }}" class="nav-link">
+                    關於
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/your-username/agent_news" target="_blank" rel="noopener" class="nav-link nav-cta">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

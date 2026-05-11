@@ -1,0 +1,63 @@
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <span class="logo-text">AI News Hub</span>
+            </div>
+            <p>
+                AI News Hub 是一個自動化的新聞聚合平台，透過 AI Agent 每日搜尋並整理最新的人工智能相關新聞。
+            </p>
+            <div class="footer-social">
+                <a href="{{ site.social.github }}" target="_blank" rel="noopener" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="{{ site.social.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:{{ site.author.email }}" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h4>快速連結</h4>
+            <ul>
+                <li><a href="{{ '/' | relative_url }}">首頁</a></li>
+                <li><a href="{{ '/news/' | relative_url }}">新聞列表</a></li>
+                <li><a href="{{ '/categories/' | relative_url }}">分類</a></li>
+                <li><a href="{{ '/tags/' | relative_url }}">標籤</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h4>關於我們</h4>
+            <ul>
+                <li><a href="{{ '/about/' | relative_url }}">關於本站</a></li>
+                <li><a href="https://github.com/your-username/agent_news" target="_blank" rel="noopener">GitHub 專案</a></li>
+                <li><a href="mailto:{{ site.author.email }}">聯絡我們</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h4>分類</h4>
+            <ul>
+                {% for category in site.categories limit: 5 %}
+                <li>
+                    <a href="{{ '/categories/#' | append: category[0] | relative_url }}">{{ category[0] }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            &copy; {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved. | 
+            Powered by <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> & AI Agent
+        </p>
+    </div>
+</footer>

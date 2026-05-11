@@ -1,0 +1,297 @@
+/* ========================================
+   AI News Hub - Responsive Styles
+   響應式設計
+   ======================================== */
+
+/* Extra Large Devices (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Large Devices (992px to 1199px) */
+@media (max-width: 1199.98px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* Medium Devices (768px to 991px) */
+@media (max-width: 991.98px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .sidebar {
+        position: static;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .hero-title {
+        font-size: 40px;
+    }
+}
+
+/* Small Devices (576px to 767px) */
+@media (max-width: 767.98px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    .hero {
+        padding: 80px 20px 60px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        flex-direction: column;
+        padding: 20px;
+        gap: 16px;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu-toggle {
+        display: block;
+    }
+    
+    .nav-cta {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .subscribe-form {
+        flex-direction: column;
+    }
+    
+    .subscribe-form button {
+        width: 100%;
+    }
+    
+    .post-title {
+        font-size: 28px;
+    }
+    
+    .related-posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-share {
+        flex-wrap: wrap;
+    }
+}
+
+/* Extra Small Devices (less than 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .hero-badge {
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+    
+    .banner-content {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .marquee {
+        width: 100%;
+    }
+    
+    .news-banner {
+        position: relative;
+        top: 64px;
+    }
+    
+    .sidebar-widget {
+        padding: 16px;
+    }
+    
+    .subscribe-section {
+        padding: 40px 16px;
+    }
+    
+    .subscribe-text h3 {
+        font-size: 22px;
+        flex-direction: column;
+    }
+    
+    .footer-content {
+        gap: 24px;
+    }
+    
+    .post-card {
+        padding: 20px;
+    }
+    
+    .blog-post {
+        padding: 0 4px;
+    }
+    
+    .post-header {
+        margin-bottom: 24px;
+    }
+    
+    .post-title {
+        font-size: 24px;
+    }
+    
+    .post-excerpt {
+        font-size: 16px;
+    }
+    
+    .back-to-top button {
+        width: 100%;
+    }
+    
+    /* Touch-friendly targets */
+    .nav-link,
+    .btn,
+    .post-card,
+    .share-btn,
+    .tag-cloud-item {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navigation,
+    .news-banner,
+    .sidebar,
+    .subscribe-section,
+    .post-share,
+    .back-to-top {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .site-content {
+        padding: 0;
+    }
+    
+    .post-card {
+        break-inside: avoid;
+    }
+}
+
+/* Dark mode support for system preference */
+@media (prefers-color-scheme: light) {
+    :root {
+        --dark-bg: #FFFFFF;
+        -- darker-bg: #F8FAFC;
+        --card-bg: #FFFFFF;
+        --text-primary: #334155;
+        --text-secondary: #64748B;
+        --border-color: #E2E8F0;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000000;
+        --text-primary: #000000;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .hero {
+        padding: 40px 20px 40px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-subtitle {
+        display: none;
+    }
+}

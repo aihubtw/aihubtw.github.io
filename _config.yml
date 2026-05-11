@@ -1,0 +1,145 @@
+# ===========================================
+# AI Intelligence Hub - Site Configuration
+# 專業 AI 情報站配置
+# ===========================================
+
+# Site Settings
+title: "AI Intelligence Hub | AI 智慧情報網"
+name: "AI Intelligence Hub"
+description: "專業 AI 情報站 - 提供最新的 AI 行業新聞、深度分析、技術洞察與市場趨勢追蹤。"
+keywords: "AI, 人工智能, 機器學習, 深度學習, GPT, Llama, Claude, 大語言模型, AI 新聞, AI 報告"
+lang: "zh-TW"
+timezone: "Asia/Taipei"
+
+# Author Information
+author:
+  name: "AI Intelligence Hub"
+  email: "admin@aiintelligencehub.com"
+  url: "https://yourusername.github.io"
+
+# URL and Base URL
+url: "https://yourusername.github.io"
+baseurl: "/agent_news"
+
+# Theme and Layout
+theme: null  # 我們使用自定義佈局
+domain: "yourusername.github.io"
+permalink: /:categories/:title/
+paginate: 10
+paginate_path: "/articles/page/:num/"
+
+# Site Navigation
+nav_links:
+  - title: "首頁"
+    url: "/"
+  - title: "分類"
+    url: "/categories"
+  - title: "標籤"
+    url: "/tags"
+  - title: "關於"
+    url: "/about"
+
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+excerpt_separator: "<!-- more -->"
+lsi: false
+safe: true
+whitelist:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Jekyll Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+
+# Posts Settings
+future: false
+show_drafts: false
+limit_posts: 0
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .gitignore
+  - README.md
+  - LICENSE
+  - CATEGORIES.md
+  - DEPLOYMENT.md
+  - scripts/
+
+# Category System (完整分類清單)
+categories:
+  - 大語言模型
+  - 生成式AI
+  - 深度學習
+  - 產業動態
+  - AI應用
+  - 責任與治理
+  - 硬體與基礎設施
+  - 觀點與分析
+  - 教育與學習
+  - 活動與社群
+
+# Article Types (文章類型)
+article_types:
+  - 深度分析
+  - 熱點新聞
+  - 觀點評論
+  - 教學指南
+
+# Default Front Matter Settings
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      type: "深度分析"
+      author: "AI Intelligence Hub"
+
+# RSS Feed Settings
+feed:
+  posts_limit: 20
+  categories:
+    - 大語言模型
+    - 生成式AI
+    - 深度學習
+
+# Sitemap Settings
+sitemap:
+  filename: "sitemap.xml"
+  exclude:
+    - "/feed.xml"
+  include_posts:
+    - "/sitemap/pages"
+
+# SEO Settings
+social:
+  name: "AI Intelligence Hub"
+  links:
+    - https://github.com/yourusername
+    - https://twitter.com/yourusername
+    - https://linkedin.com/in/yourusername
+
+analytics:
+  google:
+    tracking_id: ""  # 設置你的 Google Analytics ID
+
+# Custom Variables
+dark_theme: true
+show_excerpt: true
+show_reading_time: true
+show_share_buttons: true
+show_related_posts: true
+enable_ai_insights: true

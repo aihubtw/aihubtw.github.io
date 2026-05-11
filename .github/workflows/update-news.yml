@@ -1,0 +1,76 @@
+name: Update AI News
+
+on:
+  schedule:
+    # Run daily at 9:00 AM Taipei time (UTC+8)
+    - cron: '0 1 * * *'  # 1:00 AM UTC = 9:00 AM Taipei time
+  
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4 markdownify python-dateutil
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+      
+      - name: Run AI News Scraper
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+        run: |
+          python scripts/scrape_ai_news.py
+        continue-on-error: true
+      
+      - name: Check for new posts
+        id: check-posts
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Found new posts to commit"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No new posts found"
+          fi
+      
+      - name: Commit new posts
+        if: steps.check-posts.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "ai-news-agent[bot]@users.noreply.github.com"
+          git config --local user.name "AI News Agent"
+          git add _posts/
+          git status
+          # Show what changed
+          git diff --cached --name-status
+          git commit -m "🤖 AI Agent: Add new AI news articles - $(date +'%Y-%m-%d')"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Create summary
+        if: steps.check-posts.outputs.has_changes == 'true'
+        run: |
+          echo "## AI News Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Successfully updated AI news articles" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Updated at: $(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY

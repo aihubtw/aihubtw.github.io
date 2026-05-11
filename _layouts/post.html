@@ -1,0 +1,157 @@
+---
+layout: default
+---
+
+<article class="article-page">
+    <!-- 文章頭部 -->
+    <header class="article-header">
+        <div class="article-meta-top">
+            <span class="article-type-badge type-{{ page.type | default: 'news' }}">{{ page.type | default: '熱點新聞' }}</span>
+            <a href="/categories/{{ page.category | slugify }}" class="article-category-link">
+                {{ page.category | default: 'AI' }}
+            </a>
+        </div>
+
+        <h1 class="article-title">{{ page.title }}</h1>
+
+        <div class="article-meta-bottom">
+            <div class="author-info">
+                <span class="author-tag">🤖 AI Intelligence Hub</span>
+                <time class="publish-date">{{ page.date | date: "%Y年%m月%d日 %H:%M" }}</time>
+            </div>
+            {% if page.tags %}
+            <div class="article-tags">
+                {% for tag in page.tags %}
+                <a href="/tags/{{ tag | slugify }}" class="tag">#{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- 摘要 -->
+    {% if page.excerpt %}
+    <div class="article-excerpt-box">
+        <h3>📄 文章摘要</h3>
+        <p>{{ page.excerpt }}</p>
+    </div>
+    {% endif %}
+
+    <!-- 主要內容 -->
+    <div class="article-content">
+        {{ content }}
+    </div>
+
+    <!-- AI 觀點評論區 -->
+    {% if page.ai_insight or page.ai_analysis %}
+    <section class="ai-insight-section" id="ai-insight">
+        <div class="insight-header">
+            <span class="insight-icon">💭</span>
+            <h2>AI 觀點與分析</h2>
+            <span class="insight-badge">AI Intelligence Hub 原創</span>
+        </div>
+
+        {% if page.ai_insight %}
+        <div class="ai-insight-block">
+            <h3>🎯 核心觀點</h3>
+            <div class="insight-content">
+                {{ page.ai_insight | markdownify }}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if page.ai_analysis %}
+        <div class="ai-analysis-block">
+            <h3>📊 深度分析</h3>
+            <div class="analysis-content">
+                {{ page.ai_analysis | markdownify }}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if page.ai_implication %}
+        <div class="ai-implication-block">
+            <h3>🔮 未來展望</h3>
+            <div class="implication-content">
+                {{ page.ai_implication | markdownify }}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if page.ai_recommendation %}
+        <div class="ai-recommendation-block">
+            <h3>💡 建議與提醒</h3>
+            <div class="recommendation-content">
+                {{ page.ai_recommendation | markdownify }}
+            </div>
+        </div>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- 文章互動區 -->
+    <footer class="article-footer">
+        <!-- 分享按鈕 -->
+        <div class="share-section">
+            <h4>分享這篇文章</h4>
+            <div class="share-buttons">
+                <a href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&url={{ page.url | absolute_url }}" target="_blank" class="share-btn twitter">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" class="share-btn facebook">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" class="share-btn linkedin">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <button onclick="copyArticleLink()" class="share-btn copy">
+                    <i class="fas fa-copy"></i> 複製連結
+                </button>
+            </div>
+        </div>
+
+        <!-- 相關標籤 -->
+        {% if page.tags %}
+        <div class="related-tags">
+            <h4>相關標籤</h4>
+            <div class="tag-cloud">
+                {% for tag in page.tags %}
+                <a href="/tags/{{ tag | slugify }}" class="tag">#{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- 相關文章 -->
+        <div class="related-articles">
+            <h4>相關文章</h4>
+            <div class="related-articles-list">
+                {% assign related_posts = site.posts | where: 'category', page.category | slice: 0, 3 %}
+                {% for post in related_posts %}
+                {% if post.url != page.url %}
+                <a href="{{ post.url }}" class="related-article-card">
+                    <span class="related-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                    <h5>{{ post.title }}</h5>
+                    <p>{{ post.excerpt | truncatewords: 15 }}</p>
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回按鈕 -->
+    <div class="back-section">
+        <a href="/" class="back-btn">
+            <i class="fas fa-arrow-left"></i> 返回首頁
+        </a>
+    </div>
+</article>
+
+<script>
+function copyArticleLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        alert('連結已複製到剪貼板！');
+    });
+}
+</script>
