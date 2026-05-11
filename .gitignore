@@ -40,3 +40,10 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+
+# Internal/Sensitive Documents
+# ⚠️ These files contain CEO persona and internal plans
+CEO_MEMORY.md
+plan/
+reports/
+preview.html

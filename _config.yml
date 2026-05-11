@@ -18,8 +18,8 @@ author:
   url: "https://yourusername.github.io"
 
 # URL and Base URL
-url: "https://yourusername.github.io"
-baseurl: "/agent_news"
+url: "https://aihubtw.github.io"
+baseurl: ""
 
 # Theme and Layout
 theme: null  # 我們使用自定義佈局
